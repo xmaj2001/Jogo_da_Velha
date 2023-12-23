@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game#</title>
+    <style>
+        .Container{
+            width: 30%;
+            margin: auto;
+            margin-top: 70px;
+        }
+        .Container h1{
+           text-align: center;
+           margin-right: 70px;
+           color: darkgray;
+           font-family: Android Insomnia;
+        }
+        .azul{
+            color: rgb(0, 170, 255);
+        }
+        .red{
+            color: red;
+        }
+        .BT{
+            width: 100px;
+            height: 100px;
+            margin: 4px;
+            contain: content;
+            background-color: white;
+            border: none;
+            box-shadow: 2px 1px 8px rgba(0, 0, 0, 0.25);
+            font-size: 20px;
+            transition: all 200ms;
+        }
+    </style>
+</head>
+<body>
+    <div class="Container">
+        <h1 id="Tgm">
+            Game <span class="azul" id="GM">X</span>
+        </h1>
+        <button onclick="Analizar(this)" class="BT" id="btn1">
+        </button>
+        <button onclick="Analizar(this)" class="BT" id="btn2">
+        </button>
+        <button onclick="Analizar(this)" class="BT" id="btn3">
+        </button>
+        <button onclick="Analizar(this)" class="BT" id="btn4">
+        </button>
+        <button onclick="Analizar(this)" class="BT" id="btn5">
+        </button>
+        <button onclick="Analizar(this)" class="BT" id="btn6">
+        </button>
+        <button onclick="Analizar(this)" class="BT" id="btn7">
+        </button>
+        <button onclick="Analizar(this)" class="BT" id="btn8">
+        </button>
+        <button onclick="Analizar(this)" class="BT" id="btn9">
+        </button>
+    </div>
+
+    <script>
+        function Analizar(btn = new HTMLButtonElement){
+            let gm = document.getElementById("GM");
+            let tgm = document.getElementById("Tgm");
+            if(btn.innerText == "" && tgm.innerText != "KO"){
+                if (gm.innerText == "X") {
+                    btn.innerText = gm.innerText;
+                    btn.style.color = "rgb(0, 170, 255)";
+                    gm.classList.remove("azul");
+                    gm.classList.add("red");
+                    gm.innerText = "O";
+                    Verficar("X");
+                } else {
+                    btn.innerText = gm.innerText;
+                    btn.style.color ="red";
+                    gm.innerText = "X";
+                    gm.classList.add("azul");
+                    gm.classList.remove("red");
+                    Verficar("O");
+                }
+            }
+        }
+
+
+        function Verficar(vl){
+            let tgm = document.getElementById("Tgm");
+            let btn1 = document.getElementById("btn1");
+            let btn2 = document.getElementById("btn2");
+            let btn3 = document.getElementById("btn3");
+            let btn4 = document.getElementById("btn4");
+            let btn5 = document.getElementById("btn5");
+            let btn6 = document.getElementById("btn6");
+            let btn7 = document.getElementById("btn7");
+            let btn8 = document.getElementById("btn8");
+            let btn9 = document.getElementById("btn9");
+
+            // Horizontalmete
+
+            if(btn1.innerText == vl && btn2.innerText == vl && btn3.innerText == vl){
+                btn1.style.background ="rgb(20,20,20)";
+                btn2.style.background ="rgb(20,20,20)";
+                btn3.style.background ="rgb(20,20,20)";
+                tgm.innerText ="KO";
+            }else if (btn4.innerText == vl && btn5.innerText == vl && btn6.innerText == vl) {
+                btn4.style.background = "rgb(20,20,20)";
+                btn5.style.background = "rgb(20,20,20)";
+                btn6.style.background = "rgb(20,20,20)";
+                tgm.innerText = "KO";
+            } else if (btn7.innerText == vl && btn8.innerText == vl && btn9.innerText == vl) {
+                btn7.style.background = "rgb(20,20,20)";
+                btn8.style.background = "rgb(20,20,20)";
+                btn9.style.background = "rgb(20,20,20)";
+                tgm.innerText = "KO";
+            }
+
+            // Verticalmente
+
+            if (btn1.innerText == vl && btn4.innerText == vl && btn7.innerText == vl) {
+                btn1.style.background = "rgb(20,20,20)";
+                btn4.style.background = "rgb(20,20,20)";
+                btn7.style.background = "rgb(20,20,20)";
+                tgm.innerText = "KO";
+            } else if (btn2.innerText == vl && btn5.innerText == vl && btn8.innerText == vl) {
+                btn2.style.background = "rgb(20,20,20)";
+                btn5.style.background = "rgb(20,20,20)";
+                btn8.style.background = "rgb(20,20,20)";
+                tgm.innerText = "KO";
+            } else if (btn3.innerText == vl && btn6.innerText == vl && btn9.innerText == vl) {
+                btn3.style.background = "rgb(20,20,20)";
+                btn6.style.background = "rgb(20,20,20)";
+                btn9.style.background = "rgb(20,20,20)";
+                tgm.innerText = "KO";
+            }
+
+            // O X
+
+            if (btn1.innerText == vl && btn5.innerText == vl && btn9.innerText == vl) {
+                btn1.style.background = "rgb(20,20,20)";
+                btn5.style.background = "rgb(20,20,20)";
+                btn9.style.background = "rgb(20,20,20)";
+                tgm.innerText = "KO";
+            } else if (btn3.innerText == vl && btn5.innerText == vl && btn7.innerText == vl) {
+                btn3.style.background = "rgb(20,20,20)";
+                btn5.style.background = "rgb(20,20,20)";
+                btn7.style.background = "rgb(20,20,20)";
+                tgm.innerText = "KO";
+            }
+        }
+    </script>
+</body>
+</html>
